@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import CommentSection from "@/components/CommentSection";
@@ -27,6 +28,9 @@ export default function IdeaDetail() {
 
   return (
     <main className="max-w-2xl mx-auto px-4 py-10">
+      <Link href="/" className="text-sm text-gray-500 hover:underline mb-4 inline-block">
+        ← Back to all ideas
+      </Link>
       <h1 className="text-2xl font-bold">{idea.title}</h1>
       <p className="text-gray-500 mb-1">{idea.authorName || "Anonymous"}</p>
       <p className="mt-4">{idea.description}</p>

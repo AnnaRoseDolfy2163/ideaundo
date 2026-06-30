@@ -16,10 +16,10 @@ type Idea = {
 
 export default function IdeaCard({ idea }: { idea: Idea }) {
   const [liked, setLiked] = useState(() => {
-  if (typeof window === "undefined") return false;
-  const likedIdeas = JSON.parse(localStorage.getItem("likedIdeas") || "[]");
-  return likedIdeas.includes(idea.id);
-});
+    if (typeof window === "undefined") return false;
+    const likedIdeas = JSON.parse(localStorage.getItem("likedIdeas") || "[]");
+    return likedIdeas.includes(idea.id);
+  });
 
   const handleLike = async () => {
     if (liked) return;
@@ -31,11 +31,12 @@ export default function IdeaCard({ idea }: { idea: Idea }) {
   };
 
   return (
-    <div className="border rounded-xl p-4">
+    <div className="border rounded-xl p-4 flex flex-col h-full">
       <Link href={`/idea/${idea.id}`}>
         <h2 className="text-lg font-semibold hover:underline">{idea.title}</h2>
       </Link>
-      <p className="text-gray-600 mt-1 line-clamp-3">{idea.description}</p>
+
+      <p className="text-gray-500 text-sm mt-1 line-clamp-1">{idea.description}</p>
 
       {idea.tags && idea.tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-2">
@@ -47,7 +48,7 @@ export default function IdeaCard({ idea }: { idea: Idea }) {
         </div>
       )}
 
-      <div className="flex items-center justify-between mt-3 text-sm text-gray-500">
+      <div className="flex items-center justify-between mt-auto pt-3 text-sm text-gray-500">
         <span>{idea.authorName || "Anonymous"}</span>
         <div className="flex items-center gap-4">
           <button

@@ -27,7 +27,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="max-w-2xl mx-auto px-4 py-10">
+    <main className="max-w-6xl mx-auto px-4 py-10">
       <header className="text-center mb-10">
         <h1 className="text-4xl font-bold mb-2">ഐഡിയ ഉണ്ടോ?</h1>
         <p className="text-gray-500">
@@ -37,14 +37,18 @@ export default function Home() {
 
       <button
         onClick={() => setShowForm(!showForm)}
-        className="w-full bg-black text-white rounded-xl py-3 mb-8 font-medium"
+        className={
+          showForm
+            ? "bg-gray-200 text-gray-700 rounded-lg px-4 py-2 mb-4 text-sm font-medium"
+            : "w-full bg-black text-white rounded-xl py-3 mb-8 font-medium"
+        }
       >
-        {showForm ? "Close" : "+ Add an idea"}
+        {showForm ? "✕ Close" : "+ Add an idea"}
       </button>
 
       {showForm && <IdeaForm onPosted={() => setShowForm(false)} />}
 
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {ideas.map((idea) => (
           <IdeaCard key={idea.id} idea={idea} />
         ))}
