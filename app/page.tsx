@@ -8,7 +8,8 @@ import IdeaForm from "@/components/IdeaForm";
 type Idea = {
   id: string;
   title: string;
-  description: string;
+  problem: string;
+  solution: string;
   tags?: string[];
   authorName?: string | null;
   likes: number;
