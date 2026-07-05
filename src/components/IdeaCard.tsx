@@ -8,7 +8,8 @@ import ShareButton from "./ShareButton";
 type Idea = {
   id: string;
   title: string;
-  description: string;
+  problem: string;
+  solution: string;
   tags?: string[];
   authorName?: string | null;
   likes: number;
@@ -36,7 +37,7 @@ export default function IdeaCard({ idea }: { idea: Idea }) {
         <h2 className="text-lg font-semibold hover:underline">{idea.title}</h2>
       </Link>
 
-      <p className="text-gray-500 text-sm mt-1 line-clamp-1">{idea.description}</p>
+      <p className="text-gray-500 text-sm mt-1 line-clamp-1">🔍 {idea.problem}</p>
 
       {idea.tags && idea.tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-2">

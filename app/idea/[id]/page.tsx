@@ -9,7 +9,8 @@ import CommentSection from "@/components/CommentSection";
 type Idea = {
   id: string;
   title: string;
-  description: string;
+  problem: string;
+  solution: string;
   authorName?: string | null;
 };
 
@@ -33,7 +34,16 @@ export default function IdeaDetail() {
       </Link>
       <h1 className="text-2xl font-bold">{idea.title}</h1>
       <p className="text-gray-500 mb-1">{idea.authorName || "Anonymous"}</p>
-      <p className="mt-4">{idea.description}</p>
+      <div className="mt-4 space-y-4">
+        <div>
+          <h2 className="font-semibold text-gray-700">🔍 The Problem</h2>
+          <p className="text-gray-600 mt-1">{idea.problem}</p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-gray-700">💡 The Solution</h2>
+          <p className="text-gray-600 mt-1">{idea.solution}</p>
+        </div>
+      </div>
       <CommentSection ideaId={idea.id} />
     </main>
   );
